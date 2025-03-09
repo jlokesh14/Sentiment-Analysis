@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sentiment Analysis</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="shortcut icon" href="https://cdn4.iconfinder.com/data/icons/artificial-intelligence-142/24/sentiment_analysis_feeling_emotion_emoji_recognition_expression-1024.png" type="image/x-icon">
+</head>
+<body>
+    <h1>Sentiment Analysis</h1> <br>
+    <form method="post" action="{% url 'analyze' %}">
+        {% csrf_token %}
+        <label for="text">Enter text:</label>
+        <input type="text" id="text" name="text" required>
+        <button type="submit">Analyze</button>
+    </form>
+    {% if result %}
+        <h2>Result:</h2>
+        <p>Lokesh {{ result }}</p>
+        <p>{{ sentiment }}</p>
+    {% endif %}
+</body>
+</html>
